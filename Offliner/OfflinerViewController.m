@@ -71,10 +71,10 @@
     
     if ([self isOffline] != YES){
         // Use the protocol cache policy. This is the default.
-        result = [[NSURLRequest alloc] initWithURL:[self URL] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10L];
+        result = [[NSURLRequest alloc] initWithURL:[self URL] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:5L];
     } else {
         // If it's in the cache, use it, otherwise do not attempt to load.
-        result = [[NSURLRequest alloc] initWithURL:[self URL] cachePolicy:NSURLRequestReturnCacheDataDontLoad timeoutInterval:10L];
+        result = [[NSURLRequest alloc] initWithURL:[self URL] cachePolicy:NSURLRequestReturnCacheDataDontLoad timeoutInterval:5L];
     }
     
     return result;
