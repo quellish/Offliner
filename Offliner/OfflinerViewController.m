@@ -42,7 +42,7 @@
 
 - (IBAction)fetchButtonReleased:(id)sender {
     
-    [[self textLabel] setText:nil];
+    [[self textLabel] setText:@"Loading..."];
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     [self dataWithRequest:[self request] completion:^(NSURLResponse *response, NSData *data, NSError *error){
         if (response != nil){
