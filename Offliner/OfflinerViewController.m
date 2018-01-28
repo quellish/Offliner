@@ -63,7 +63,7 @@
 #pragma mark Network
 
 - (NSURL *)URL  {
-    return [NSURL URLWithString:@"http://s3.amazonaws.com/notremote/People.json"];
+    return [NSURL URLWithString:@"https://s3.amazonaws.com/notremote/People.json"];
 }
 
 - (NSURLRequest *) request {
