@@ -63,7 +63,7 @@
 #pragma mark Network
 
 - (NSURL *)URL  {
-    return [NSURL URLWithString:@"http://s3.amazonaws.com/notremote/People.json"];
+    return [NSURL URLWithString:@"https://s3.amazonaws.com/notremote/People.json"];
 }
 
 - (NSURLRequest *) request {
@@ -81,7 +81,13 @@
 }
 
 - (void) dataWithRequest:(NSURLRequest *)request completion:(void (^)(NSURLResponse*, NSData*, NSError*))completion{
-    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue new] completionHandler:completion];
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        completion(response, data, error);
+    }];
+    
+    [task resume];
 }
 
 #pragma mark Error handling
